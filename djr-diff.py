@@ -2,13 +2,7 @@ import json
 from django.contrib.auth.models import User
 from reversion.models import Version, Revision
 
-# Only for Shell #
-##################
-from calib_inv.models import Gauge
-obj = Gauge.objects.get(pk=6)
-##################
-
-# Need to pass in the gauge to 'vers'
+# Need to pass in the obj to 'vers'
 vers = Version.objects.get_for_object(obj)
 dicts = []
 # Builds dictionary for each version
@@ -58,4 +52,4 @@ for i in range(len(dicts)):
         # Appends initial dictionary to 'diffs' list
         diffs.append(temp_dict)
 
-print(diffs)
+return diffs
